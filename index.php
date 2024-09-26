@@ -8,11 +8,21 @@ Kirby::plugin('shallowred/layouts', [
 
   'layoutMethods' => [
     'computedAttrs' => function () {
-      $classes = $this->kirby()->apply('shallowred.layouts.layoutClassList', ['attrs' => $this->attrs()], 'attrs');
+
+      $computedClasses = $this
+        ->kirby()
+        ->apply('shallowred.layouts.layoutClassList', ['attrs' => $this->attrs()], 'attrs');
+
       return attr([
         'id' => $this->attrs()->id(),
-        'class' => A::join(A::merge(['k-row'], $classes, [$this->class()]), ' '),
+        'class' => A::join(A::merge(['k-row'], $computedClasses, [$this->class()]), ' '),
       ]);
+    },
+  ],
+
+  "hooks" => [
+    'shallowred.layouts.layoutClassList' => function ($attrs) {
+      return [];
     },
   ],
 
