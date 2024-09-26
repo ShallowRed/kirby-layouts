@@ -7,7 +7,7 @@ Kirby::plugin('shallowred/layouts', [
   ],
 
   'layoutMethods' => [
-    'vv_attrs' => function () {
+    'computedAttrs' => function () {
       $classes = $this->kirby()->apply('shallowred.layouts.layoutClassList', ['attrs' => $this->attrs()], 'attrs');
       return attr([
         'id' => $this->attrs()->id(),
@@ -17,7 +17,7 @@ Kirby::plugin('shallowred/layouts', [
   ],
 
   'layoutColumnMethods' => [
-    'vv_attrs' => function () {
+    'computedAttrs' => function () {
       return attr([
         'class' => A::join([
           'k-column',
@@ -28,7 +28,7 @@ Kirby::plugin('shallowred/layouts', [
   ],
 
   'blockMethods' => [
-    'vv_attrs' => function () {
+    'computedAttrs' => function () {
       return attr([
         'class' => A::join([
           'k-block',
